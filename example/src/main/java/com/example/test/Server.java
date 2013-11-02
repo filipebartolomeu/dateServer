@@ -37,7 +37,7 @@ public class Server {
         } 
     } 
     
-    private static String getTime(){
+    public static String getTime(){
     	
     	return new Date().toString();
     }
