@@ -26,7 +26,7 @@ public class Server {
                 try { 
                     PrintWriter out = 
                         new PrintWriter(socket.getOutputStream(), true); 
-                    out.println(new Date().toString()); 
+                    out.println(getTime()); 
                 } finally { 
                     socket.close(); 
                 } 
@@ -36,6 +36,11 @@ public class Server {
             listener.close(); 
         } 
     } 
+    
+    private static String getTime(){
+    	
+    	return new Date().toString();
+    }
 }
 
       
