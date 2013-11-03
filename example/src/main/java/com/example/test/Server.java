@@ -14,32 +14,42 @@ import java.util.Date;
  * server you can write. 
  */ 
 public class Server { 
- 
+	
+	
+	private static ServerSocket listener = null;
+	
     /** 
      * Runs the server. 
      */ 
     public static void main(String[] args) throws IOException { 
-        ServerSocket listener = new ServerSocket(9090); 
-        try { 
+         
+    	start();
+    	
+    } 
+    
+    public static void start() throws IOException{
+    	
+       listener = new ServerSocket(9090); 
+    	    	
+       try {
+    	   
+    	     
             while (true) { 
                 Socket socket = listener.accept(); 
                 try { 
                     PrintWriter out = 
                         new PrintWriter(socket.getOutputStream(), true); 
-                    out.println(getTime()); 
+                    out.println(new Date().toString()); 
                 } finally { 
                     socket.close(); 
                 } 
-            } 
-        } 
+             
+            }
+        }
         finally { 
             listener.close(); 
-        } 
-    } 
+        }
     
-    public static String getTime(){
-    	
-    	return new Date().toString();
     }
 }
 
